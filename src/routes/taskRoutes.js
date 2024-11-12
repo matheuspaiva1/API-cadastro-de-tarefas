@@ -1,5 +1,6 @@
 const express = require('express');
 const Task = require('../entities/task');
+const { update } = require('../controllers/taskController');
 
 const router = express.Router();
 
@@ -21,7 +22,16 @@ router.get('/task', async (req, res) => {
   }
 })
 
-router.patch('/task:id', async (req, res) => {
+router.patch('/task/:id', async (req, res) => {
+  try {
+    const taskUpdate = await update(req.params.id, req.body)
+    res.status(200).json(taskUpdate)
+  } catch (error) {
+    res.status(400).json({ error: error.message })
+  }
+})
+
+router.patch('/task/:id/status', async (req, res) => {
   try {
     const task = await Task.create(req.body)
     res.status(201).json(task)

@@ -3,12 +3,24 @@ Content-Type: application/json
 
 {
   "description": "estudar react",
-  "checked": "false"
+  "checked": "true"
 }
 
 ################################
 GET http://localhost:3000/api/task
 
+################################
+PATCH http://localhost:3000/api/task/4
+Content-Type: application/json
+
+{
+  "description": "estudar react e nextJS"
+}
+
+################################
+PATCH http://localhost:3000/api/task/4/false
+
+
 ###
-DELETE http://localhost:3000/api/task/1
+DELETE http://localhost:3000/api/task/2
  
