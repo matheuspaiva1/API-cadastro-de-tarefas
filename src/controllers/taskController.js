@@ -31,8 +31,11 @@ const updateCheck = async () => {
 }
 
 const deleteTask = async () => {
-  
+  const taskDelete = await Task.destroy({where: {id: id}}).then(() => {
+    console.log('tarefa deletada')
+  })
+  return taskDelete
 }
 
 
-module.exports = {create, listTask, }
+module.exports = {create, listTask, deleteTask}

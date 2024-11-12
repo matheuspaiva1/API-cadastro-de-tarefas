@@ -30,12 +30,17 @@ router.patch('/task:id', async (req, res) => {
   }
 })
 
-router.delete('/task:id', async (req, res) => {
+router.delete('/task/:id', async (req, res) => {
   try {
-    const task = await Task.create(req.body)
-    res.status(201).json(task)
+    const taskDelete = await Task.destroy({where: {id: req.params.id}})
+
+    if (taskDelete) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ error: 'Usuário não encontrado' });
+    }  
   } catch (error) {
-    res.status(400).json({ error: error })
+    res.status(500).json({ error: error })
   }
 })
 
