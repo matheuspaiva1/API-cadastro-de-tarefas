@@ -18,7 +18,12 @@ Content-Type: application/json
 }
 
 ################################
-PATCH http://localhost:3000/api/task/4/false
+PATCH http://localhost:3000/api/task/3/checked
+Content-Type: application/json
+
+{
+  "checked": "false"
+}
 
 
 ###

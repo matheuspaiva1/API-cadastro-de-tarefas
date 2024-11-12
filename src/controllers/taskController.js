@@ -46,7 +46,29 @@ const update = async (id, body) => {
 
 }
 
-const updateCheck = async () => {
+const updateCheck = async (id) => {
+
+  try {
+    const [checkedUpdate] = await Task.update(
+      {checked:false},
+      {where: {id:id, checked:true}}
+    )
+
+    if (checkedUpdate == 0) {
+      const [checkedUpdate] = await Task.update(
+        {checked:true},
+        {where: {id:id, checked:false}}
+      )
+    }
+
+    const findTask = await Task.findByPk(id)
+    return findTask;
+    
+  } catch (error) {
+    throw error
+  }
+
+  
 }
 
 const deleteTask = async () => {
