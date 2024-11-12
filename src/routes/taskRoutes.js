@@ -14,10 +14,10 @@ router.post('/task', async (req, res) => {
 
 router.get('/task', async (req, res) => {
   try {
-    const task = await Task.create(req.body)
-    res.status(201).json(task)
+    const task = await Task.findAll()
+    res.json(task)
   } catch (error) {
-    res.status(400).json({ error: error })
+    res.status(500).json({ error: error.message })
   }
 })
 

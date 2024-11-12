@@ -14,4 +14,25 @@ const create = async (task) => {
   }
 }
 
-module.exports = {create}
+const listTask = async () => {
+  try {
+    const list = await Task.findAll()
+    
+    return list
+  } catch (error) {
+    throw error
+  }
+}
+
+const update = async () => {
+}
+
+const updateCheck = async () => {
+}
+
+const deleteTask = async () => {
+  
+}
+
+
+module.exports = {create, listTask, }
